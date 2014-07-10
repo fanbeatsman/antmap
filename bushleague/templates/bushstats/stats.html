@@ -1,7 +1,12 @@
 <!DOCTYPE HTML>
 {% load static %}
+{% load render_table from django_tables2 %}
 
 <html>
+<head><link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" /></head>
 
+<body>
+	{% render_table stats %}
+</body>
 
 </html>

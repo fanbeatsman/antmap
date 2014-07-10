@@ -1,0 +1,33 @@
+{% extends "bushstats/base.html" %}
+{% load static %}
+{% block title %} New Game {% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+    <h1>Game Set and Match</h1>
+    <br/>
+
+    <div class="container-fluid">
+            <!--  -->
+	<form id="user_form" method="post" action="/bushstats/stats_test/">
+		{% csrf_token %}
+		<input type="submit" name="Game Go" value="Update_stats">
+        </form>
+	<br />
+        {% if result_list %}
+        <!-- Display search results in an ordered list -->
+        <div style="clear: both;">
+	RESULT LIST HERE
+            <ol>
+	    {{ result_list }}
+            {% for result in result_list %}
+                <li>
+		Hero Id: {{ result.hero_id }}
+                </li>
+            {% endfor %}
+            </ol>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -13,6 +13,11 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
+SETTINGS_DIR = os.path.dirname(__file__)
+PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
+PROJECT_PATH = os.path.abspath(PROJECT_PATH)
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -56,10 +61,12 @@ WSGI_APPLICATION = 'first_rango_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+DATABASE_PATH = os.path.join(PROJECT_PATH, 'firstapp.db') 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': DATABASE_PATH,
     }
 }
 
@@ -81,3 +88,31 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Templates
+
+TEMPLATE_DIRS = (
+     'code/first_rango_project/templates/'
+)
+
+
+TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
+
+TEMPLATE_DIRS = (
+     TEMPLATE_PATH,
+)
+
+#Static
+
+STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
+
+STATIC_URL = '/static/' 
+
+STATICFILES_DIRS = (
+     STATIC_PATH,
+)
+
+#Media
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
