@@ -1,18 +1,18 @@
 <!DOCTYPE html>
+{% extends 'firstapp/base.html' %}
 
 {% load static %} <!-- New Line -->
 
-<html>
-
-	<head>
-		<title>Bushleague</title>
-	</head>
-
-	<body>
+{% block body_block %}
 		<h1> TESTING</h1>
+		{% if user.is_authenticated %}
+		You are in my friend <strong> {{ boldmessage }} </strong>
+		{% else %}
 		A penny saved is a penny earned <strong>{{ boldmessage }}</strong><br />
+		{% endif %}
 <a href="/firstapp/about/">ABOUT</a><br />
 		<a href="/firstapp/add_category"> Add </a>
-		<img src=" {% static "OD.jpg" %}" alt="Picture" /> 
-	</body>
-</html>
+		<img src=" {% static "OD.jpg" %}" alt="Picture" />
+		<a href="/firstapp/register">Register</a>
+		<a href="/firstapp/login">Login</a> 
+{% endblock %}
