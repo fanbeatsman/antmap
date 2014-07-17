@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-
 <html>
 	<head>
-		<title>Profiler</title>
+		<title>{% block title %} Profiler {% endblock %}</title>
 	</head>
 	<body>
 	<div>
@@ -13,6 +12,9 @@
 	<div>
 		<ul>
 		{% if user.is_authenticated %}
+			<img src = "{{ user.userprofile.picture.url }}" alt="profile pic">
+			username: {{ user.username }}<br>
+			website: {{ user.userprofile.website }} <!-- WTF -->
 			<li><a href="/firstapp/logout/">Logout</a></li>
 		{% else %}
 			<li><a href="/firstapp/login/">Login</a></li>

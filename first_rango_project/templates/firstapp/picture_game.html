@@ -1,0 +1,22 @@
+{% extends "firstapp/base.html" %}
+{% load static %}
+{% block title %} Guess the name {% endblock %}
+
+{% block body_block %}
+    <center><h1>Guess the name of the user with this profile picture</h1></center>
+    <br/><br>
+<center><img src="{{ profile_picture_url }}" alt="profilepic"></center>
+
+<form name="answer" method="POST" action="/firstapp/picture_game/">
+{% csrf_token %}
+<center>
+	<input type="radio" name="choice" value="{{ random_name1 }}">{{ random_name1 }}<br>
+	<input type="radio" name="choice" value="{{ random_name2 }}">{{ random_name2 }}<br>
+	<input type="radio" name="choice" value="{{ random_name3 }}">{{ random_name3 }}<br>
+	<input type="radio" name="choice" value="{{ random_name4 }}">{{ random_name4 }}<br>
+	
+	<input type="submit" name="submit" value="take_guess">
+	
+</center>
+
+{% endblock %}

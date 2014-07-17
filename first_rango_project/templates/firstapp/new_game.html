@@ -1,0 +1,39 @@
+{% extends "firstapp/base.html" %}
+{% load static %}
+{% block title %} New Game {% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+    <h1>Game Set and Match</h1>
+    <br/>
+
+    <div class="container-fluid">
+            <!--  -->
+	<form id="user_form" method="post" action="/firstapp/stats_test/">
+		{% csrf_token %}
+		<input type="submit" name="Game Go" value="Update_stats">
+        </form>
+	<br />
+	{{ profile_picture_url }}
+	 <img src="{{ profile_picture_url }} alt="Profile" />
+
+        {% if result_list %}
+        <!-- Display search results in an ordered list -->
+        <div style="clear: both;">
+	RESULT LIST HERE
+	    <img src="http://media.steampowered.com/steamcommunity/public/images/avatars/f1/f1dd60a188883caf82d0cbfccfe6aba0af1732d4_full.jpg" alt="Profile" />
+            <ol>
+	    {{ result_list }}
+            {% for result in result_list %}
+                <li>
+		Hero Id: {{ result.hero_id }}
+                </li>
+            {% endfor %}
+            </ol>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<img src=" {% static "OD.jpg" %}" alt="Picture" />
+
+{% endblock %}
