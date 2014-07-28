@@ -27,7 +27,8 @@ class Ant(models.Model):
 	discoverer = models.CharField(_('Discoverer'), max_length=128, blank=True)
 	discovery_year = models.IntegerField(_('Discovery Year'), default=0, blank=True)
 	species = models.ForeignKey(Species, blank=True)
-	
+	specimen_ID = models.CharField(_('Specimen ID'), max_length=128, blank=True) 
+		
 	def __unicode__(self):
 		return self.species
 	
